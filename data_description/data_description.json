@@ -1,0 +1,1064 @@
+{
+    "$schema": "./data_description_schema.json",
+    "line_endings": "unix",
+    "elements": {
+        "assists": {
+            "change": "gw",
+            "description": "Number of assists in total",
+            "notes": {
+                "personal_notes": "The total number of assists during a season, except GW0 where previous season is listed",
+                "official_explanation": "Total goal assists – awarded to the player from the goalscoring team who makes the final pass before a goal is scored, including own goals.",
+                "referance": "https://fantasy.premierleague.com/statistics/assists"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "bonus": {
+            "change": "gw",
+            "description": "Total bonus points awarded",
+            "notes": {
+                "personal_notes": "Given based on 'bsp' score given in each match",
+                "official_explanation": "The three best performing players in each match according to the BPS will receive additional bonus points - 3 points will be awarded to the highest scoring player, 2 to the second best and 1 to the third.",
+                "referance": "https://fantasy.premierleague.com/statistics/bonus"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "bps": {
+            "change": "gw",
+            "description": "Total bonus point score",
+            "notes": {
+                "personal_notes": "The score/rating/rank awarded total in a season, based on score from each gw",
+                "official_explanation": "The Bonus Points System (BPS) uses a range of stats to create a BPS score for each player. The three best performing players in each match will be awarded bonus points.",
+                "referance": "https://fantasy.premierleague.com/statistics/bps"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "chance_of_playing_next_round": {
+            "change": "continuous",
+            "description": "The chance of a player playing next round",
+            "notes": {
+                "personal_notes": "Seems to be not to be filled (NaN) if player have no history of not being able to play",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/the-scout/player-news"
+            },
+            "data_type": "float",
+            "type": "discrete",
+            "calculated": "snapshot"
+        },
+        "chance_of_playing_this_round": {
+            "change": "None",
+            "description": "The chance in range 0.0 - 100.00 of a player playing this round",
+            "notes": {
+                "personal_notes": "Seems to be not to be filled (NaN) if player have no history of not being able to play.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/the-scout/player-news"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "snapshot"
+        },
+        "clean_sheets": {
+            "change": "gw",
+            "description": "The total number of clean sheets",
+            "notes": {
+                "personal_notes": "How many clean sheets recorded in the course of season",
+                "official_explanation": "Total clean sheets – awarded to players who do not concede a goal and have played at least 60 minutes.",
+                "referece": "https://fantasy.premierleague.com/statistics/clean_sheets"
+            },
+            "data_type": "integer",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "code": {
+            "change": "static",
+            "description": "Player ID",
+            "notes": {
+                "personal_notes": "Most probably the player idenfication number",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "None",
+            "calculated": "static"
+        },
+        "corners_and_indirect_freekicks_order": {
+            "change": "continuous",
+            "description": "Rank of the cornertakers",
+            "notes": {
+                "personal_notes": "Should apply to mainly corners - how found is unknown, perhaps number of corners taken during season",
+                "official_explanation": "This table displays a list of expected set-piece takers for each Premier League side. They are based on a mix of information gathered fom last season’s matches, the Opta statistics, pre-season friendlies and also the players role at previous clubs and predicted role at new sides. The list will be updated constantly as new information becomes available on assigned set-pieces takers. It will also be refreshed throughout the season as roles chop and change.",
+                "referece": "https://fantasy.premierleague.com/the-scout/set-piece-takers"
+            },
+            "data_type": "float",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "corners_and_indirect_freekicks_text": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Usage not understood",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "None",
+            "calculated": "None"
+        },
+        "cost_change_event": {
+            "change": "continuous",
+            "description": "Total positive price change during current gameweek",
+            "notes": {
+                "personal_notes": "Represent the positive change in price during current event. Positive value for cost rise, and negative value when cost falls.",
+                "official_explanation": "How much a player’s price has increased this Gameweek.",
+                "referece": "https://fantasy.premierleague.com/statistics/cost_change_event"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "cost_change_event_fall": {
+            "change": "continuous",
+            "description": "Total negative price change during current gameweek",
+            "notes": {
+                "personal_notes": "Represent the negative change in price during current event. Positive value for cost fall, and negative value when price rises.",
+                "official_explanation": "How much a player’s price has fallen this Gameweek.",
+                "referece": "https://fantasy.premierleague.com/statistics/cost_change_event_fall"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "cost_change_start": {
+            "change": "continuous",
+            "description": "Total positive price change during current season",
+            "notes": {
+                "personal_notes": "Represent the positive change in price during current season. Positive value for cost rise, and negative value when cost falls.",
+                "official_explanation": "How much a player’s price has increased since the start of the season.",
+                "referece": "https://fantasy.premierleague.com/statistics/cost_change_start"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "cost_change_start_fall": {
+            "change": "continuous",
+            "description": "Total negative price change during current season",
+            "notes": {
+                "personal_notes": "Represent the negative change in price during current season. Positive value for cost falls, and negative value when cost rises.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/statistics/cost_change_start_fall"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "creativity": {
+            "change": "gw",
+            "description": "Total creativity score for season",
+            "notes": {
+                "personal_notes": "Creativity assesses player performance in terms of producing goalscoring opportunities for others. It can be used as a guide to identify the players most likely to supply assists. While this analyses frequency of passing and crossing, it also considers pitch location and quality of the final ball.",
+                "official_explanation": "Creativity assesses player performance in terms of producing goalscoring opportunities for other players. Part of the ICT index.",
+                "referece": "https://fantasy.premierleague.com/statistics/cost_change_start_fall"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "creativity_rank": {
+            "change": "gw",
+            "description": "The current creativity ranking for the player",
+            "notes": {
+                "personal_notes": "Rank based on creativity score for all players in FPL season.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "creativity_rank_type": {
+            "change": "None",
+            "description": "Rank based on creativity score for all players in same posiition in FPL season.",
+            "notes": {
+                "personal_notes": "Other score than creativity_rank, after invesitgating it seems it is the rank for the player position",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "direct_freekicks_order": {
+            "change": "gw",
+            "description": "Rank of the direct freekick takers",
+            "notes": {
+                "personal_notes": "How rank is calculated is unknown, perhaps number of corners taken during season",
+                "official_explanation": "This table displays a list of expected set-piece takers for each Premier League side. They are based on a mix of information gathered fom last season’s matches, the Opta statistics, pre-season friendlies and also the players role at previous clubs and predicted role at new sides. The list will be updated constantly as new information becomes available on assigned set-pieces takers. It will also be refreshed throughout the season as roles chop and change.",
+                "referece": "https://fantasy.premierleague.com/the-scout/set-piece-takers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "direct_freekicks_text": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Not understood",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "None",
+            "calculated": "None"
+        },
+        "dreamteam_count": {
+            "change": "gw",
+            "description": "Total time present in dreamteam",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "The number of times a player has been selected in a Gameweek Dream Team. Players with the most points in a Gameweek in a valid formation earn a place in the Dream Team.",
+                "referece": "https://fantasy.premierleague.com/statistics/dreamteam_count"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "element_type": {
+            "change": "season",
+            "description": "Player position",
+            "notes": {
+                "personal_notes": "Could be combined with element types object to get player position in text form",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "categorical",
+            "calculated": "static"
+        },
+        "ep_next": {
+            "change": "continuous",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Expectance of playing next round. Needs further investigation",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "snapshot"
+        },
+        "ep_this": {
+            "change": "continuous",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Expectance of playing this round. Needs further investigation",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "snapshot"
+        },
+        "event_points": {
+            "change": "gw",
+            "description": "Points earned during current event",
+            "notes": {
+                "personal_notes": "Needs to address what gw to link to.",
+                "official_explanation": "Total points earned in the latest Gameweek.",
+                "referece": "https://fantasy.premierleague.com/statistics/event_points"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "snapshot"
+        },
+        "first_name": {
+            "change": "static",
+            "description": "Player first name",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "form": {
+            "change": "gw",
+            "description": "Form of the player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Form is a player’s average score per match, calculated from all matches played by his club in the last 30 days.",
+                "referece": "https://fantasy.premierleague.com/statistics/form"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "moving average"
+        },
+        "goals_conceded": {
+            "change": "gw",
+            "description": "Total number of goals conceded while player is on pitch",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Total number of goals conceded by a team while the player has been on the pitch.",
+                "referece": "https://fantasy.premierleague.com/statistics/goals_conceded"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "goals_scored": {
+            "change": "gw",
+            "description": "Total number of goals scored by player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Total goals scored this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/goals_scored"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "ict_index": {
+            "change": "gw",
+            "description": "ICT Index Score",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Statistical index developed specifically to assess a player as an FPL asset, combining Influence, Creativity and Threat scores.",
+                "referece": "https://fantasy.premierleague.com/statistics/ict_index"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "ict_index_rank": {
+            "change": "gw",
+            "description": "The current ICT ranking for the player among all players",
+            "notes": {
+                "personal_notes": "Rank based on ICT score for all players in FPL season.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "ict_index_rank_type": {
+            "change": "None",
+            "description": "The current ICT ranking for the player among players in same position",
+            "notes": {
+                "personal_notes": "Other score than ict_index_rank, after invesitgating it seems it is the rank for the player position",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "id": {
+            "change": "season",
+            "description": "Unique ID for player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "in_dreamteam": {
+            "change": "gw",
+            "description": "Flag to identify if player is in the current gw dreamteam",
+            "notes": {
+                "personal_notes": "Based on points ranking for position",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/dream-team/"
+            },
+            "data_type": "boolean",
+            "type": "categorical",
+            "calculated": "rank"
+        },
+        "influence": {
+            "change": "gw",
+            "description": "Total accumulated influance score.",
+            "notes": {
+                "personal_notes": "Seems to be the total accumulated influence gathered throughout the season.",
+                "official_explanation": "Influence evaluates a player’s impact on a match, taking into account actions that could directly or indirectly affect the match outcome. Part of the ICT index.",
+                "referece": "https://fantasy.premierleague.com/statistics/influence"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "influence_rank": {
+            "change": "gw",
+            "description": "The current influence ranking for the player among all players",
+            "notes": {
+                "personal_notes": "Rank based on influence score for all players in FPL season.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "influence_rank_type": {
+            "change": "gw",
+            "description": "The current influence ranking for the player among players in same position",
+            "notes": {
+                "personal_notes": "Rank based on influence score for all players in same position.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "minutes": {
+            "change": "gw",
+            "description": "Total amount of minutes played current season",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Total minutes played this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/minutes"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "news": {
+            "change": "continuous",
+            "description": "News/updates regarding player",
+            "notes": {
+                "personal_notes": "Important events regarding the player",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "snapshot"
+        },
+        "news_added": {
+            "change": "continuous",
+            "description": "Timestamp of when news is added",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "date_time",
+            "type": "continuous",
+            "calculated": "snapshot"
+        },
+        "now_cost": {
+            "change": "continuous",
+            "description": "Current price of player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Current buying price in the transfer market.",
+                "referece": "https://fantasy.premierleague.com/statistics/now_cost"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "snapshot"
+        },
+        "own_goals": {
+            "change": "gw",
+            "description": "Total number of own goals scored by player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "penalties_missed": {
+            "change": "gw",
+            "description": "Total number of penalties missed by player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Awarded to a player who takes a penalty but does not score from the penalty spot.",
+                "referece": "https://fantasy.premierleague.com/statistics/penalties_missed"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "penalties_order": {
+            "change": "gw",
+            "description": "Rank of the penalty takers",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "This table displays a list of expected set-piece takers for each Premier League side. They are based on a mix of information gathered fom last season’s matches, the Opta statistics, pre-season friendlies and also the players role at previous clubs and predicted role at new sides. The list will be updated constantly as new information becomes available on assigned set-pieces takers. It will also be refreshed throughout the season as roles chop and change.",
+                "referece": "https://fantasy.premierleague.com/the-scout/set-piece-takers"
+            },
+            "data_type": "float",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "penalties_saved": {
+            "change": "gw",
+            "description": "Total number of penalties saved",
+            "notes": {
+                "personal_notes": "Applies/relevant for GK",
+                "official_explanation": "Awarded to a goalkeeper who touches the ball when saving a penalty.",
+                "referece": "https://fantasy.premierleague.com/statistics/penalties_saved"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "penalties_text": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "None",
+            "calculated": "None"
+        },
+        "photo": {
+            "change": "season",
+            "description": "File path to player image",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "points_per_game": {
+            "change": "gw",
+            "description": "Average points per game played by player",
+            "notes": {
+                "personal_notes": "Must be investigated if it applies to all games where player is in match squad",
+                "official_explanation": "Player’s total points divided by player’s number of matches.",
+                "referece": "https://fantasy.premierleague.com/statistics/points_per_game"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "average"
+        },
+        "red_cards": {
+            "change": "gw",
+            "description": "Total number of red cards awarded to player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Total red cards this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/red_cards"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "saves": {
+            "change": "gw",
+            "description": "Total number of saves made by player",
+            "notes": {
+                "personal_notes": "Applies to mainly GK",
+                "official_explanation": "Total times a goalkeeper has saved a shot on goal.",
+                "referece": "https://fantasy.premierleague.com/statistics/saves"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "second_name": {
+            "change": "static",
+            "description": "Players second name",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "selected_by_percent": {
+            "change": "continuous",
+            "description": "Current selection percentage of the player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "The percentage of overall Fantasy managers who currently own the player.",
+                "referece": "https://fantasy.premierleague.com/statistics/selected_by_percent"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "percentage"
+        },
+        "special": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Not understood - only False entries in dataset as per 2020-09-16",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "boolean",
+            "type": "categorical",
+            "calculated": "None"
+        },
+        "squad_number": {
+            "change": "season",
+            "description": "Player squad number",
+            "notes": {
+                "personal_notes": "Dead variable - seems all are set to None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "status": {
+            "change": "continuous",
+            "description": "Status of player availability",
+            "notes": {
+                "personal_notes": "Seems to indicate the availability of player. Contains 'a' (available), 'i' (injured), 'd' (?), 'n' (loaned out), 'u' (unregistered), 's' (suspended)'",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/the-scout/player-news"
+            },
+            "data_type": "string",
+            "type": "categorical",
+            "calculated": "snapshot"
+        },
+        "team": {
+            "change": "continuous",
+            "description": "Current team of player",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "categorical",
+            "calculated": "static"
+        },
+        "team_code": {
+            "change": "continuous",
+            "description": "None",
+            "notes": {
+                "personal_notes": "Difference between team and team_code not understood. Probably a more permanent team id and independent of season",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "integer",
+            "type": "categorical",
+            "calculated": "static"
+        },
+        "threat": {
+            "change": "gw",
+            "description": "Total threat score for season",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Threat gauges players who are most likely to score goals. Part of the ICT index.",
+                "referece": "https://fantasy.premierleague.com/statistics/threat"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "threat_rank": {
+            "change": "gw",
+            "description": "The current threat ranking for the player",
+            "notes": {
+                "personal_notes": "Rank based on threat score for all players in FPL season.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "threat_rank_type":  {
+            "change": "gw",
+            "description": "The current threat ranking for the player among players in same position",
+            "notes": {
+                "personal_notes": "Rank based on threat score for all players i same position for FPL season.",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/transfers"
+            },
+            "data_type": "integer",
+            "type": "discrete",
+            "calculated": "rank"
+        },
+        "total_points": {
+            "change": "gw",
+            "description": "Total number of points earned by player",
+            "notes": {
+                "personal_notes": "Total number of points accumulated through a season for a player",
+                "official_explanation": "Total points earned this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/total_points"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "transfers_in": {
+            "change": "continuous",
+            "description": "Total number of transfers in",
+            "notes": {
+                "personal_notes": "Seems to be the total number of transfers in, made in course of season",
+                "official_explanation": "None",
+                "referece": "https://fantasy.premierleague.com/statistics/transfers_in"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "transfers_in_event": {
+            "change": "continuous",
+            "description": "Total amount of transfer made in during this event.",
+            "notes": {
+                "personal_notes": "Seems to be the total number of transfers in during an event. Resets when new event starts.",
+                "official_explanation": "Total number of times a player has been transferred in to a team this Gameweek.",
+                "referece": "https://fantasy.premierleague.com/statistics/transfers_in_event"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "transfers_out": {
+            "change": "continuous",
+            "description": "Total number of transfers out",
+            "notes": {
+                "personal_notes": "Seems to be the total number of transfers out, made in course of season",
+                "official_explanation": "Total number of times a player has been transferred out of a team this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/transfers_out"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "transfers_out_event": {
+            "change": "continuous",
+            "description": "Total amount of transfer made out during this event.",
+            "notes": {
+                "personal_notes": "Seems to be the total number of transfers in during an event. Resets when new event starts.",
+                "official_explanation": "Total number of times a player has been transferred out of a team this Gameweek.",
+                "referece": "https://fantasy.premierleague.com/statistics/transfers_out_event"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        },
+        "value_form": {
+            "change": "continuous",
+            "description": "form/value",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Player’s form divided by player’s value.",
+                "referece": "https://fantasy.premierleague.com/statistics/value_form"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "fraction"
+        },
+        "value_season": {
+            "change": "continuous",
+            "description": "total_points/value",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Player’s total points divided by player’s value.",
+                "referece": "https://fantasy.premierleague.com/statistics/value_season"
+            },
+            "data_type": "float",
+            "type": "continuous",
+            "calculated": "fraction"
+        },
+        "web_name": {
+            "change": "season",
+            "description": "Players display name",
+            "notes": {
+                "personal_notes": "Preferred name for visualization",
+                "official_explanation": "None",
+                "referece": "none.none.com"
+            },
+            "data_type": "string",
+            "type": "descriptive",
+            "calculated": "static"
+        },
+        "yellow_cards": {
+            "change": "gw",
+            "description": "Total number of yellow cards",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "Total yellow cards this season.",
+                "referece": "https://fantasy.premierleague.com/statistics/yellow_cards"
+            },
+            "data_type": "integer",
+            "type": "continuous",
+            "calculated": "cumulative_sum"
+        }
+    },
+    "teams": {
+        "code": {
+            "change": "static",
+            "description": "Permanent code of the team",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referece": "none.com"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "draw": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "form": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "id": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "loss": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "name": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "played": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "points": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "position": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "short_name": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "team_division": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "unavailable": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "win": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_overall_home": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_overall_away": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_attack_home": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_attack_away": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_defence_home": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "strength_defence_away": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        },
+        "pulse_id": {
+            "change": "None",
+            "description": "None",
+            "notes": {
+                "personal_notes": "None",
+                "official_explanation": "None",
+                "referance": "None"
+            },
+            "data_type": "None",
+            "type": "None",
+            "calculated": "cumulative_sum"
+        }
+    }
+}

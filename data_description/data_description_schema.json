@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/product.schema.json",
+    "title": "DataTypes",
+    "description": "A product from Acme's catalog",
+    "type": "object",
+    "properties": {
+        "elements": { 
+            "type": "object",
+            "patternProperties": {
+            ".+": { "$ref": "#/definitions/element_property" }
+        }
+    },
+    "teams": { 
+        "type": "object",
+        "patternProperties": {
+        ".+": { "$ref": "#/definitions/element_property" }
+    }
+}
+
+    },
+    "definitions": {
+        "element_property": {
+            "type": "object",
+            "properties": {
+                "change": {
+                    "description": "When data is updated",
+                    "type": "string",
+                    "enum": ["gw", "continuous", "season", "static","None"]
+                },
+                "description": {
+                    "description": "Short description of what the data means",
+                    "type": "string"
+                },
+                "notes": {
+                    "description": "Extensive explanation of interpertation of data",
+                    "type": "object",
+                    "properties": {
+                        "personal_notes": { 
+                            "type":"string",
+                            "description": "Personal notes regarding data"
+                        },
+                        "official_explanation": {
+                            "type": "string"
+                        },
+                        "referance": {
+                            "type": "string",
+                            "description": "url",
+                            "format": "uri"
+                        } 
+                        
+                    }
+                },
+                "data_type": {
+                    "description": "Type of the data",
+                    "type": "string",
+                    "enum": ["string", "integer", "float", "boolean", "date_time", "None"]
+                },
+                "type": {
+                    "description": "What is measured",
+                    "type": "string",
+                    "enum": ["continuous", "discrete", "categorical", "descriptive", "None"]
+                },
+                "calculated": {
+                    "description": "How data is measured",
+                    "type": "string",
+                    "enum": ["snapshot", "cumulative_sum", "static", "rank", "moving average", "average", "percentage", "fraction", "None"]
+                }
+            }
+        }
+    }
+}

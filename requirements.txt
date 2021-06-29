@@ -1,0 +1,11 @@
+azure-storage-blob
+azure-cosmos
+python-dotenv
+notebook
+jupytext
+pandas
+numpy
+requests
+tqdm
+seaborn
+click
