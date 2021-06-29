@@ -9,7 +9,7 @@ The repo is based in python3 and jupyter with jupytext for agile version control
 
 #### **Install package**
 ```bash
-git clone https://github.com/martgra/fpl2021.git
+git clone https://github.com/petterkg/my-beautiful-dark-twisted-fantasy.git
 cd fpl2021
 python3 -m venv venv
 source venv/bin/activate
@@ -21,7 +21,7 @@ touch .env
 Add the following to the created ```.env``` file
 ```bash
 # .env
-AZURE_STORAGE_CONNECTION_STRING="https://martinfplstats1337.blob.core.windows.net/fplstats"
+AZURE_STORAGE_CONNECTION_STRING="<FILL IN CONNECTION STRING>"
 ```
 
 ### Dataset
