@@ -6,9 +6,9 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.3
+      jupytext_version: 1.11.4
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -19,13 +19,17 @@ from fpl.data.azure_storage import AzureStorage
 from fpl.data.io import to_csv
 from dotenv import load_dotenv
 from pathlib import Path
+import os
 ```
 
 ```python
 # SETUP
+AZURE_STORAGE = "https://fantasy1337.blob.core.windows.net"
+
 
 DATA_DIR_2020 = "../data/2020"
 DATA_DIR_2021 = "../data/2021"
+FIXTURES_DIR_2021 = "../data/2021"
 TRANSFORMED_DATA_2020 = "../transformed_2020.csv"
 TRANSFORMED_DATA_2021 = "..//transformed_2021.csv"
 
@@ -37,12 +41,16 @@ Path(DATA_DIR_2021).mkdir(parents=True, exist_ok=True)
 load_dotenv()
 
 # 2020 data
-client2020 = AzureStorage(os.getenv("AZURE_STORAGE_CONNECTION_STRING"), "fpldata2020")
+client2020 = AzureStorage(AZURE_STORAGE, "fpldata2020")
 client2020.download_new_blobs(DATA_DIR_2020)
 
 # 2021 data
-client2021 = AzureStorage(os.getenv("AZURE_STORAGE_CONNECTION_STRING"), "fpldata2021")
+client2021 = AzureStorage(AZURE_STORAGE, "fpldata2021")
 client2021.download_new_blobs(DATA_DIR_2021)
+
+# 2021 fixtures
+client2021 = AzureStorage(AZURE_STORAGE, "fpl-fixtures-2021")
+client2021.download_new_blobs(FIXTURES_DIR_2021)
 
 # Transforming data to .csv
 to_csv(DATA_DIR_2020, TRANSFORMED_DATA_2020)
@@ -50,11 +58,11 @@ to_csv(DATA_DIR_2021, TRANSFORMED_DATA_2021)
 ```
 
 ```python
+#df = pd.read_csv(TRANSFORMED_DATA_2020)
 
-```
-
-```python
-df = pd.read_csv(TRANSFORMED_DATA_2020)
+import json
+with open("../data/2021/2021-08-11T12-44-26Z_data.json") as file:
+    fixturespd.DataFrame(json.load(file)["fixtures"])
 ```
 
 ```python

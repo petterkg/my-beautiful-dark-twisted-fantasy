@@ -1,5 +1,4 @@
 azure-storage-blob
-azure-cosmos
 python-dotenv
 notebook
 jupytext
@@ -9,3 +8,4 @@ requests
 tqdm
 seaborn
 click
+scikit-learn

@@ -1,15 +1,20 @@
 """CLI Storage module."""
 
-import os
+from pathlib import Path
 
 import click
 
 from fpl.data.azure_storage import AzureStorage
 from fpl.data.io import to_csv
 
+DEFAULT_STORAGE_ACCOUNT = "https://fantasy1337.blob.core.windows.net"
+
+
 @click.group(help="Procedures to download data from Azure Blob Storage")
 @click.option("--connection-string", "-c", type=str, default=None)
-@click.option("--container", type=str, default="fpldata2020", help="Name of Storage Container in Azure")
+@click.option(
+    "--container", type=str, default="fpldata2020", help="Name of Storage Container in Azure"
+)
 @click.pass_context
 def storage(ctx, connection_string, container):
     """Download group."""
@@ -17,7 +22,9 @@ def storage(ctx, connection_string, container):
         if connection_string:
             storage_client = AzureStorage(connection_string, container)
         else:
-            storage_client = AzureStorage(os.getenv("AZURE_STORAGE_CONNECTION_STRING"), container)
+            print(DEFAULT_STORAGE_ACCOUNT)
+            storage_client = AzureStorage(DEFAULT_STORAGE_ACCOUNT, container)
+            print("OK")
         ctx.obj = storage_client
     except TypeError:
         print("ERROR IN CONNECTION STRING")
@@ -27,8 +34,8 @@ def storage(ctx, connection_string, container):
 @click.option(
     "--data-dir",
     "-d",
-    type=click.Path(exists=True),
-    default="data/2020",
+    type=click.Path(),
+    default=lambda: Path("data", "raw", click.get_current_context().parent.params["container"]),
     help="Path to dir to store blobs",
 )
 @click.option(
@@ -40,6 +47,7 @@ def storage(ctx, connection_string, container):
 @click.pass_obj
 def download_bulk(storage_client, data_dir, download_all):
     """Download many blobs to local storage."""
+    Path(data_dir).mkdir(exist_ok=True, parents=True)
     if download_all:
         storage_client.download_blobs(download_dir_path=data_dir)
     else:
@@ -67,10 +75,13 @@ def list_storage(storage_client):
 
 @storage.command(name="to-csv", help="Transform JSON files in /data and save as CSV")
 @click.option(
-    "--data-dir", "-d", type=click.Path(exists=True), help="Path to directory that holds JSON", default="data")
+    "--data-dir",
+    "-d",
+    type=click.Path(exists=True),
+    help="Path to directory that holds JSON",
+    default="data",
+)
 @click.option("--save", "-s", type=str, help="Path to save CSV", default="transformation.csv")
 def json_to_csv(data_dir, save):
     """Transform all JSON in dir and save as CSV."""
     to_csv(data_dir, save)
-
-    
