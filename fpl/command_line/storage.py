@@ -79,9 +79,15 @@ def list_storage(storage_client):
     "-d",
     type=click.Path(exists=True),
     help="Path to directory that holds JSON",
-    default="data",
+    default="data/raw/fpldata2021",
 )
-@click.option("--save", "-s", type=str, help="Path to save CSV", default="transformation.csv")
+@click.option(
+    "--save",
+    "-s",
+    type=click.Path(),
+    help="Path to save CSV",
+    default="data/transformed/transformation.csv",
+)
 def json_to_csv(data_dir, save):
     """Transform all JSON in dir and save as CSV."""
     to_csv(data_dir, save)
