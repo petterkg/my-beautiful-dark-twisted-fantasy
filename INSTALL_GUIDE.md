@@ -28,7 +28,11 @@
     * In the opened terminal type:
     ```cmd
     python -m venv .venv
+    ```
+      ```cmd
     .venv\Scripts\activate
+    ```
+      ```cmd
     python -m pip --upgrade pip
     ```
     * Should now look like **this**
