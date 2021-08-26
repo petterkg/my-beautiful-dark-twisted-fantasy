@@ -128,6 +128,7 @@ def to_csv(
         save_path (str, optional): Path to save transformed CSV. Defaults to "data_transformed.csv".
     """
     all_data = []
+    print(fixtures_path)
     fixtures_list = list_data_dir(fixtures_path)
     for data in tqdm(list_data_dir(data_path), desc="Compiling DataFrame"):
         # Fails if JSON is malformed.

@@ -33,9 +33,11 @@ AZURE_STORAGE = "https://fantasy1337.blob.core.windows.net"
 
 DATA_DIR_2020 = "../data/raw/fpldata2020/"
 DATA_DIR_2021 = "../data/raw/fpldata2021/"
-FIXTURES_2020 = "../data/raw/fpl-fixtures-2021/"
-TRANSFORMED_DATA_2020 = "../data/transformed/data_2020.csv"
-TRANSFORMED_DATA_2021 = "../data/transformed/data_2021.csv"
+FIXTURES_2020 = "../data/raw/fpl-fixtures-2020/"
+FIXTURES_2021 = "../data/raw/fpl-fixtures-2021/"
+
+TRANSFORMED_DATA_2020 = "../data/transformed/transformed_data_2020.csv"
+TRANSFORMED_DATA_2021 = "../data/transformed/transformed_data_2021.csv"
 TRANSFORMED_DATA_TEAMS_2021 ="../data/transformed/transformed_teams_2021.csv"
 TRANSFORMED_DATA_TEAMS_2020 ="../data/transformed/transformed_teams_2020.csv"
 # Making sure data dirs exist
@@ -46,13 +48,16 @@ Path(TRANSFORMED_DATA_2021).parent.mkdir(parents=True, exist_ok=True)
 
 
 # 2020 data
-client2020 = AzureStorage(AZURE_STORAGE, "fpldata2020")
-client2020.download_new_blobs(DATA_DIR_2020)
+data_client2020 = AzureStorage(AZURE_STORAGE, "fpldata2020")
+data_client2020.download_new_blobs(DATA_DIR_2020)
+fixtures_client2020 = AzureStorage(AZURE_STORAGE, "fpl-fixtures-2020")
+fixtures_client2020.download_new_blobs(FIXTURES_2020)
 
 # 2021 data
-client2021 = AzureStorage(AZURE_STORAGE, "fpldata2021")
-client2021.download_new_blobs(DATA_DIR_2021)
-
+data_client2021 = AzureStorage(AZURE_STORAGE, "fpldata2021")
+data_client2021.download_new_blobs(DATA_DIR_2021)
+fixtures_client2021 = AzureStorage(AZURE_STORAGE, "fpl-fixtures-2021")
+fixtures_client2021.download_new_blobs(FIXTURES_2021)
 
 # Transforming data to .csv
 to_csv(data_path = DATA_DIR_2020, save_path = TRANSFORMED_DATA_2020, entity = "elements")
@@ -223,8 +228,4 @@ from fpl.visualization.exploration import reorder_elements
 
 df = reorder_elements(df)
 df
-```
-
-```python
-
 ```

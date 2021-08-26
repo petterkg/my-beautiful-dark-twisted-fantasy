@@ -15,6 +15,7 @@ def get_game_week(events: list) -> int:
 
     return gw[0]["id"] if gw else 0
 
+
 def create_id(element: dict) -> str:
     """Create a unique element id.
 
