@@ -1,4 +1,4 @@
-# Fantasy Premier League 2020/2021
+# Fantasy Premier League 2021/2022
 
 Inspired by the following tutorial:
 https://towardsdatascience.com/fantasy-premier-league-value-analysis-python-tutorial-using-the-fpl-api-8031edfe9910

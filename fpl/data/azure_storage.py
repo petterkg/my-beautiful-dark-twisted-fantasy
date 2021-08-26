@@ -11,21 +11,18 @@ from tqdm import tqdm
 
 class AzureStorage:
     """Azure Storage Blob class.
-
     Attributes:
         container_name (str): The name of the connected container
         storage_client (azure.storage.blob.BlobServiceClient): Storage account client
         container_client (azure.storage.blob.ContainerClient): Container client
-
     Example:
         load_dotenv()
-        storage = AzureStorage(os.getenv("AZURE_STORAGE_CONNECTION_STRING"), "fpldata2020")
+        storage = AzureStorage(os.getenv("AZURE_STORAGE_CONNECTION_STRING"), "fplstats")
         storage.download_new_blobs(Path(Path(__file__).resolve().parents[1], "data"))
     """
 
     def __init__(self, connection_string: str, container_name: str):
         """Initialize object.
-
         Args:
             connection_string (str): Connection string for the storage container
             container_name (str): Name of the container to connect to
@@ -36,7 +33,6 @@ class AzureStorage:
             self.container_client = self.storage_client.get_container_client(container_name)
             # self.storage_client.get_service_stats()
         except:
-            print(connection_string)
             self.storage_client = None
             self.container_client = ContainerClient.from_container_url(
                 connection_string + "/" + container_name
