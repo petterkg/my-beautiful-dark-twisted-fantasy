@@ -27,7 +27,7 @@ def load_json(file_path: str) -> dict:
     """
     with open(Path(file_path), encoding="utf-8") as json_file:
         try:
-            return json.load(json_file, encoding="UTF-8")
+            return json.load(json_file)
         except json.decoder.JSONDecodeError:
             print("Unable to load json")
 
@@ -134,7 +134,7 @@ def to_csv(
         # Fails if JSON is malformed.
         try:
             with open(data, encoding="utf-8") as file:
-                x = json.load(file, encoding="UTF-8")
+                x = json.load(file)
                 add_gw_and_download_time(x[entity], x["download_time"], get_game_week(x["events"]))
         except json.decoder.JSONDecodeError:
             print(f"cant load data from {data}")
