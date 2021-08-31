@@ -3,26 +3,6 @@
 Inspired by the following tutorial:
 https://towardsdatascience.com/fantasy-premier-league-value-analysis-python-tutorial-using-the-fpl-api-8031edfe9910
 
-### Getting started
-
-The repo is based in python3 and jupyter with jupytext for agile version control.
-
-#### **Install package**
-```bash
-git clone https://github.com/petterkg/my-beautiful-dark-twisted-fantasy.git
-cd fpl2021
-python3 -m venv venv
-source venv/bin/activate
-# On windows venv\Scripts\activate
-pip install -r requirements
-pip install -e .
-touch .env
-```
-Add the following to the created ```.env``` file
-```bash
-# .env
-AZURE_STORAGE_CONNECTION_STRING="<FILL IN CONNECTION STRING>"
-```
 
 ### Dataset
 The dataset from Fantasy Premier League is accessed  by folling this link.
