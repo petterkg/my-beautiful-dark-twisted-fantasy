@@ -35,6 +35,7 @@
     ```cmd
     python -m pip --upgrade pip
     ```
+
     * Should now look like **this**
     <img src="img/venv_example.png" alt="Screenshot" width="400"/>
 3. Install repo dependencies
