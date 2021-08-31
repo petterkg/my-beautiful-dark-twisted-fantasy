@@ -24,13 +24,17 @@
 2. Open VSCODE
     * File -> Open folder -> my-beautiful-dark-twisted fantasy -> ‘I trust author’
     * Terminal -> New Terminal -> Command Prompt (_switched from powershell in window in down right corner_)
-    <img src="img/open_terminal.png" alt="Screenshot" width="400"/>  
-    
-    * In the opened terminal type:  
- 
+    <img src="img/open_terminal.png" alt="Screenshot" width="400"/>
+
+    * In the opened terminal type:
+
     ```cmd
     python -m venv .venv
+    ```
+    ```cmd
     .venv\Scripts\activate
+    ```
+    ```cmd
     python -m pip --upgrade pip
     ```
 
@@ -40,6 +44,8 @@
     * To make repo work install dependencies and the library by typing the following in command prompt
     ```cmd
     pip install -r requirements_dev.txt
+    ```
+    ```cmd
     pip install -e .
     ```
     * Test installation by typing:
