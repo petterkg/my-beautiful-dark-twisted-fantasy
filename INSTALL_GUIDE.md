@@ -29,10 +29,10 @@
     ```cmd
     python -m venv .venv
     ```
-      ```cmd
+    ```cmd
     .venv\Scripts\activate
     ```
-      ```cmd
+    ```cmd
     python -m pip --upgrade pip
     ```
     * Should now look like **this**
